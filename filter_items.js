@@ -1,3 +1,11 @@
+/*
+    This function takes a big object, "connection" and filters
+    it based on the name of the filter and associated parameters: 
+        equal to, not equal to, contains, does not contain
+    Demo: https://jsfiddle.net/Ltvs7468
+
+*/
+
 let connection = [
 
     {
