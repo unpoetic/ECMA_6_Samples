@@ -1,23 +1,5 @@
-function multiDimensionalUnique(arr) {
-    var uniques = [];
-    var itemsFound = {};
-    for (var i = 0, l = arr.length; i < l; i++) {
-        var stringified = JSON.stringify(arr[i]);
-        if (itemsFound[stringified]) {
-            continue;
-        }
-        uniques.push(arr[i]);
-        itemsFound[stringified] = true;
-    }
-    return uniques;
-}
-
 function findLast(ray, num) {
     return ray.find(element => element == num);
-}
-
-function onlyUnique(value, index, self) {
-    return self.indexOf(value) === index;
 }
 
 function twoSum(ray, target, origRem, idx) {
@@ -25,6 +7,7 @@ function twoSum(ray, target, origRem, idx) {
     let found_1 = null;
     let found_2 = null;
     let finalS = [];
+
     for (let i = 0; i < ray.length; i++) {
         if (idx == i)
             break;
@@ -47,6 +30,7 @@ let threeSumWithTarget = (nums, tar) => {
     let tSolutions = [];
     let remainder = 0;
     let nTargets = [];
+    let tFinal = [];
 
     for (let i = 0; i < nums.length; i++) {
         remainder = tar - nums[i];
@@ -57,17 +41,15 @@ let threeSumWithTarget = (nums, tar) => {
         tSolutions.push(twoSum(nums, nTargets[j], nums[j], j));
     }
 
-    let tFinal = [];
-    let f = null;
-
     for (let k = 0; k < tSolutions.length; k++) {
         if (tSolutions[k].length > 0) {
             tFinal.push(tSolutions[k]);
         }
     }
 
-    f = multiDimensionalUnique(tFinal);
-    console.log(tar, f);
+    const map = new Map();
+	tFinal.forEach((item) => map.set(item.join(), item));
+	console.log(tar, Array.from(map.values()));
 }
 
 
